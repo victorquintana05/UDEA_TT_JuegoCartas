@@ -4,6 +4,7 @@ function repartir() {
     let tablero = document.getElementById("tablero");
     tablero.innerHTML = "";
     const TOTAL_CARTAS = 10;
+    cartas = []
     for (let i = 0; i < TOTAL_CARTAS; i++) {
         let carta = document.createElement("img");
         let indice = Math.floor(Math.random() * 52) + 1;
@@ -37,10 +38,15 @@ function verificar() {
             }
             contadores[posicion]++;
         }
-        nombreCartas=["As","Dos","Tres","Cuatro","Cinco","Seis","Siete","Ocho","Nueve","Diez","Jack","Queen","King"]
+        nombreCartas = ["As", "Dos", "Tres", "Cuatro", "Cinco", "Seis", "Siete", "Ocho", "Nueve", "Diez", "Jack", "Queen", "King"]
         //recorrer los contadores
-        for (let i = 0; i < contadores.length; i++){
-window.alert("Hay "+contadores[i]+" cartas de "+nombreCartas[i]);
+        let mensaje = "Se encontraron los siguientes grupos:\n";
+        grupos=["Vacio", "Non", "Par", "Terna"," Cuarta", "Quinta", "Sexta", "Séptima", "Octava", "Novena", "Decima"]
+        for (let i = 0; i < contadores.length; i++) {
+            if(contadores[i] >= 2){
+                mensaje += grupos[ contadores[i]] + " de " + nombreCartas[i]+"\n";
+            }
         }
+        window.alert(mensaje);
     }
 }
